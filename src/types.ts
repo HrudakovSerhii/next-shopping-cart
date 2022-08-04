@@ -34,12 +34,11 @@ export type CartItem = {
   gtin: string;
   name: string;
   imageUrl: string;
-}
-
-type CartStateItem = CartItem & {
-  quantity: number;
+  quantity?: number;
+  recommendedRetailPrice: number,
+  recommendedRetailPriceCurrency: string,
 }
 
 export type CartState = {
-  items: CartStateItem[],
+  items: CartItem[],
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import Layout from '../components/Layout';
-import ProductItem from '../components/ProductItem';
+import ProductItemView from '../components/ProductItemView';
 
 import { fetchData } from '../utils';
 
@@ -43,7 +43,7 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
       <h1>Products</h1>
       <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
         {products.map(product => (
-          <ProductItem key={product.gtin} {...product} addToCart={addToCartAction} />
+          <ProductItemView key={product.gtin} {...product} addToCart={addToCartAction} />
         ))}
       </div>
     </Layout>

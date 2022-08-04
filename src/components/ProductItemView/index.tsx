@@ -6,7 +6,7 @@ type ProductItemProps = Product & {
     addToCart: (cartItem: CartItem) => void,
 }
 
-const ProductItem: React.FC<ProductItemProps> = ({
+const ProductItemView: React.FC<ProductItemProps> = ({
   brandName,
   categoryName,
   gtin,
@@ -23,6 +23,8 @@ const ProductItem: React.FC<ProductItemProps> = ({
       gtin,
       name,
       imageUrl,
+      recommendedRetailPrice,
+      recommendedRetailPriceCurrency,
     };
 
     addToCart(addedItem);
@@ -64,4 +66,4 @@ const ProductItem: React.FC<ProductItemProps> = ({
   );
 };
 
-export default ProductItem;
+export default ProductItemView;

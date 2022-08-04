@@ -34,7 +34,7 @@ export type CartItem = {
   gtin: string;
   name: string;
   imageUrl: string;
-  quantity?: number;
+  quantity: number;
   recommendedRetailPrice: number,
   recommendedRetailPriceCurrency: string,
 }

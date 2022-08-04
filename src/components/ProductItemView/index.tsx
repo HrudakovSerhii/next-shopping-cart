@@ -25,6 +25,7 @@ const ProductItemView: React.FC<ProductItemProps> = ({
       imageUrl,
       recommendedRetailPrice,
       recommendedRetailPriceCurrency,
+      quantity: 1,
     };
 
     addToCart(addedItem);

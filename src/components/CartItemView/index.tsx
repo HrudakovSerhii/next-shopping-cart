@@ -2,11 +2,12 @@ import React from 'react';
 
 import { CartItem } from '../../types';
 
+type CartItemAction = (gtin: string) => void;
+
 type CartItemProps = CartItem & {
-    addToCart: (cartItem: CartItem) => void,
-    incrementQuantity: () => void,
-    decrementQuantity: () => void,
-    removeItem: (gtin: string) => void,
+    incrementQuantity?: CartItemAction,
+    decrementQuantity?: CartItemAction,
+    removeItem?: CartItemAction,
 }
 
 const CartItemView: React.FC<CartItemProps> = ({
@@ -23,7 +24,9 @@ const CartItemView: React.FC<CartItemProps> = ({
   const onRemoveItemClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
 
-    removeItem(gtin);
+    if (removeItem) {
+      removeItem(gtin);
+    }
   };
 
   return (

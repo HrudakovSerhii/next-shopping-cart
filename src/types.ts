@@ -42,3 +42,7 @@ export type CartItem = {
 export type CartState = {
   items: CartItem[],
 }
+
+export type AppState = {
+  cart: CartState
+}

@@ -57,6 +57,21 @@ const cartSlice = createSlice({
 export const selectCart = (state: AppState) => state.cart || initialState;
 export const selectCartItems = (state: AppState) => selectCart(state).items;
 export const selectCartSize = (state: AppState) => selectCartItems(state)?.length || 0;
+export const selectSubtotalPriceString = (state: AppState) => {
+  const cartItems = selectCartItems(state);
+
+  if (cartItems.length) {
+    const subtotalPrice = cartItems
+      .map(({ recommendedRetailPrice }) => recommendedRetailPrice)
+      .reduce((acc, current) => acc + current, 0);
+
+    const currency = cartItems[0].recommendedRetailPriceCurrency;
+
+    return `${currency} ${subtotalPrice}`;
+  }
+
+  return '';
+};
 
 export const {
   addToCart,

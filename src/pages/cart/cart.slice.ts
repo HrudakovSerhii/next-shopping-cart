@@ -8,6 +8,10 @@ export const initialState = {
   items: [],
 };
 
+type ChangeQuantityAction = {
+  payload: string
+}
+
 const cartSlice = createSlice({
   name: CART,
   initialState,
@@ -15,10 +19,30 @@ const cartSlice = createSlice({
     addToCart: (state: CartState, action: { payload: CartItem }) => {
       const existingItem = state.items.find(item => item.gtin === action.payload.gtin);
 
-      if (existingItem?.quantity) {
+      if (existingItem) {
         existingItem.quantity += 1;
       } else {
         state.items.push({ ...action.payload, quantity: 1 });
+      }
+    },
+    incrementQuantity: (state: CartState, action: ChangeQuantityAction) => {
+      const existingItem = state.items.find(item => item.gtin === action.payload);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+      }
+    },
+    decrementQuantity: (state: CartState, action: ChangeQuantityAction) => {
+      const existingItem = state.items.find(item => item.gtin === action.payload);
+
+      if (existingItem) {
+        if (existingItem.quantity === 1) {
+          const index = state.items.findIndex(item => item.gtin === action.payload);
+
+          state.items.splice(index, 1);
+        } else {
+          existingItem.quantity -= 1;
+        }
       }
     },
   },
@@ -35,6 +59,8 @@ export const selectCartItems = (state: AppState) => selectCart(state).items;
 
 export const {
   addToCart,
+  incrementQuantity,
+  decrementQuantity,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

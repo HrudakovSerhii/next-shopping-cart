@@ -1,10 +1,13 @@
+import React from 'react';
+
 import Link from 'next/link';
 
 type Props = {
   children: React.ReactNode;
+  cartItemsCount: number;
 };
 
-const Layout = ({ children }: Props) => (
+const Layout = ({ children, cartItemsCount }: Props) => (
   <div className="container mx-auto px-4">
     <div className="flex justify-between">
       <strong>Qogita</strong>
@@ -17,7 +20,7 @@ const Layout = ({ children }: Props) => (
           </li>
           <li>
             <Link href="/cart">
-              <a className="underline">Your Cart</a>
+              <a className="underline">{`Your Cart (${cartItemsCount})`}</a>
             </Link>
           </li>
         </ul>

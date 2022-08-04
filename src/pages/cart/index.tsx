@@ -5,6 +5,7 @@ import Layout from '../../components/Layout';
 
 import {
   selectCartItems,
+  selectCartSize,
   incrementQuantity,
   decrementQuantity,
 } from './cart.slice';
@@ -14,9 +15,10 @@ import CartItemView from '../../components/CartItemView';
 const CartPage = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  const cartItemsCount = useSelector(selectCartSize);
 
   return (
-    <Layout>
+    <Layout cartItemsCount={cartItemsCount}>
       <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
         {cartItems.map(cartItem => (
           <CartItemView

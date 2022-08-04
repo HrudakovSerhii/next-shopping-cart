@@ -1,12 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from '../components/Layout';
 import ProductItemView from '../components/ProductItemView';
 
 import { fetchData } from '../utils';
 
-import { addToCart } from './cart/cart.slice';
+import { addToCart, selectCartSize } from './cart/cart.slice';
 
 import { API_PRODUCTS_PATH } from './api/products';
 
@@ -33,13 +33,14 @@ type HomePageProps = {
 
 const HomePage: React.FC<HomePageProps> = ({ products }) => {
   const dispatch = useDispatch();
+  const cartItemsCount = useSelector(selectCartSize);
 
   const addToCartAction = (cartItem: CartItem) => {
     dispatch(addToCart(cartItem));
   };
 
   return (
-    <Layout>
+    <Layout cartItemsCount={cartItemsCount}>
       <h1>Products</h1>
       <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
         {products.map(product => (

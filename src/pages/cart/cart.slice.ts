@@ -56,6 +56,7 @@ const cartSlice = createSlice({
 
 export const selectCart = (state: AppState) => state.cart || initialState;
 export const selectCartItems = (state: AppState) => selectCart(state).items;
+export const selectCartSize = (state: AppState) => selectCartItems(state)?.length || 0;
 
 export const {
   addToCart,

@@ -4,11 +4,14 @@ import { ErrorResponse, Product, ProductsResponse } from '../../../types';
 
 type GetPage = (page: number) => Product[];
 
-const getPage: GetPage = (page) => {
-  if (page < 1) return [];
+export const API_PRODUCTS_PATH = '/api/products';
+
+const getPage: GetPage = page => {
+  if (page < 1) { return []; }
   const SIZE = 20;
   const startIndex = page * SIZE - SIZE;
   const endIndex = startIndex + SIZE;
+
   return products.slice(startIndex, endIndex);
 };
 
@@ -25,7 +28,8 @@ const handler = (
         ? query.page.join('')
         : query.page;
       const pageNum = Number(stringifiedPage ?? 1);
-      if (isNaN(pageNum) || pageNum < 1) {
+
+      if (Number.isNaN(pageNum) || pageNum < 1) {
         status(400).send('Bad Request');
       } else {
         status(200).json({

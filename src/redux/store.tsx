@@ -4,7 +4,7 @@ import {
   configureStore,
 } from '@reduxjs/toolkit';
 
-import cartReducer, { CART } from '../pages/cart/cart.slise';
+import cartReducer, { CART } from '../pages/cart/cart.slice';
 
 const makeStore = () =>
   configureStore({

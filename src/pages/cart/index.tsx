@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Layout from '../../components/Layout';
 
-import { selectCartItems } from './cart.slise';
+import { selectCartItems } from './cart.slice';
 
 import CartItemView from '../../components/CartItemView';
 

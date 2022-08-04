@@ -6,7 +6,7 @@ import ProductItemView from '../components/ProductItemView';
 
 import { fetchData } from '../utils';
 
-import { addToCart } from './cart/cart.slise';
+import { addToCart } from './cart/cart.slice';
 
 import { API_PRODUCTS_PATH } from './api/products';
 

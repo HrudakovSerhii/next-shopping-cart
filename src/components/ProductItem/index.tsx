@@ -1,8 +1,12 @@
 import React from 'react';
 
-import { Product } from '../../types';
+import { CartItem, Product } from '../../types';
 
-const ProductItem: React.FC<Product> = ({
+type ProductItemProps = Product & {
+    addToCart: (cartItem: CartItem) => void,
+}
+
+const ProductItem: React.FC<ProductItemProps> = ({
   brandName,
   categoryName,
   gtin,
@@ -10,11 +14,18 @@ const ProductItem: React.FC<Product> = ({
   name,
   recommendedRetailPrice,
   recommendedRetailPriceCurrency,
+  addToCart,
 }) => {
   const onProductClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
 
-    console.log('product clicked');
+    const addedItem = {
+      gtin,
+      name,
+      imageUrl,
+    };
+
+    addToCart(addedItem);
   };
 
   return (

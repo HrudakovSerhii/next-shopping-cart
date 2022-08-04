@@ -4,9 +4,13 @@ import {
   configureStore,
 } from '@reduxjs/toolkit';
 
+import cartReducer, { CART } from '../pages/cart/cart.slise';
+
 const makeStore = () =>
   configureStore({
-    reducer: {},
+    reducer: {
+      [CART]: cartReducer,
+    },
     devTools: true,
   });
 

@@ -26,3 +26,20 @@ export type ProductsResponse = {
  * The response type of /api/products/[gtin].
  */
 export type ProductResponse = Product;
+
+/**
+ * Cart item type of store.cart
+ */
+export type CartItem = {
+  gtin: string;
+  name: string;
+  imageUrl: string;
+}
+
+type CartStateItem = CartItem & {
+  quantity: number;
+}
+
+export type CartState = {
+  items: CartStateItem[],
+}

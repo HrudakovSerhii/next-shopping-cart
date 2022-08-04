@@ -10,6 +10,9 @@ module.exports = {
     jest: true,
     es2020: true,
   },
+  globals: {
+    JSX: true,
+  },
   plugins: ['react', 'react-hooks'],
   parserOptions: {
     ecmaVersion: 11,

@@ -1,4 +1,7 @@
+import React from 'react';
+
 import Layout from '../components/Layout';
+import ProductItem from '../components/ProductItem';
 
 import { fetchData } from '../utils';
 
@@ -28,6 +31,11 @@ type HomePageProps = {
 const HomePage: React.FC<HomePageProps> = ({ products }) => (
   <Layout>
     <h1>Products</h1>
+    <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
+      {products.map(product => (
+        <ProductItem key={product.gtin} {...product} />
+      ))}
+    </div>
   </Layout>
 );
 

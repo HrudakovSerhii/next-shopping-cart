@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { HYDRATE } from 'next-redux-wrapper';
 
 import { CartItem, CartState } from '../../types';
 
@@ -20,6 +21,12 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },
+  },
+  extraReducers: {
+    [HYDRATE]: (state, action) => ({
+      ...state,
+      ...action.payload,
+    }),
   },
 });
 

@@ -44,22 +44,12 @@ describe('cart.slice', () => {
       });
     });
 
-    it('Should increase existing product quantity correctly', () => {
-      dispatch(addToCart(mockCartItem));
-
-      expect(store.getState().cart).toStrictEqual({
-        items: [
-          { ...mockCartItem, quantity: 2 },
-        ],
-      });
-    });
-
     it('Should increment by 1 existing product quantity correctly', () => {
       dispatch(incrementQuantity(mockCartItem.gtin));
 
       expect(store.getState().cart).toStrictEqual({
         items: [
-          { ...mockCartItem, quantity: 3 },
+          { ...mockCartItem, quantity: 2 },
         ],
       });
     });
@@ -69,7 +59,7 @@ describe('cart.slice', () => {
 
       expect(store.getState().cart).toStrictEqual({
         items: [
-          { ...mockCartItem, quantity: 2 },
+          { ...mockCartItem, quantity: 1 },
         ],
       });
     });
@@ -79,7 +69,7 @@ describe('cart.slice', () => {
 
       expect(store.getState().cart).toStrictEqual({
         items: [
-          { ...mockCartItem, quantity: 2 },
+          { ...mockCartItem, quantity: 1 },
         ],
       });
     });

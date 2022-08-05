@@ -19,9 +19,7 @@ const cartSlice = createSlice({
     addToCart: (state: CartState, action: { payload: CartItem }) => {
       const existingItem = state.items.find(item => item.gtin === action.payload.gtin);
 
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
+      if (!existingItem) {
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },

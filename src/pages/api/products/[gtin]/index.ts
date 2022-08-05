@@ -4,9 +4,7 @@ import { ErrorResponse, Product, ProductResponse } from '../../../../types';
 
 type GetProduct = (gtin: string) => Product | undefined;
 
-const getProduct: GetProduct = (gtin) => {
-  return products.find((product) => product.gtin === gtin);
-};
+const getProduct: GetProduct = gtin => products.find(product => product.gtin === gtin);
 
 const handler = (
   request: NextApiRequest,
@@ -20,7 +18,13 @@ const handler = (
       const stringifiedGtinQuery = Array.isArray(query.gtin)
         ? query.gtin.join('')
         : query.gtin;
-      const product = getProduct(stringifiedGtinQuery);
+
+      let product;
+
+      if (stringifiedGtinQuery) {
+        product = getProduct(stringifiedGtinQuery);
+      }
+
       if (product) {
         status(200).json(product);
       } else {

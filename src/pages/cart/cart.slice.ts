@@ -36,13 +36,7 @@ const cartSlice = createSlice({
       const existingItem = state.items.find(item => item.gtin === action.payload);
 
       if (existingItem) {
-        if (existingItem.quantity === 1) {
-          const index = state.items.findIndex(item => item.gtin === action.payload);
-
-          state.items.splice(index, 1);
-        } else {
-          existingItem.quantity -= 1;
-        }
+        existingItem.quantity -= 1;
       }
     },
     removeFromCart: (state: CartState, action: ChangeQuantityAction) => {

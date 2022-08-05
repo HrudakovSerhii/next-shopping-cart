@@ -5,7 +5,9 @@ import { ErrorResponse, Product, ProductsResponse } from '../../../types';
 type GetPage = (page: number, size: number) => Product[];
 
 export const API_PRODUCTS_PATH = '/api/products';
-export const DEFAULT_PAGE_SIZE = 20;
+
+export const PRODUCTS_PER_PAGE = [10, 20, 50, 100];
+export const DEFAULT_PAGE_SIZE = PRODUCTS_PER_PAGE[0];
 
 export const getPage: GetPage = (page, size) => {
   if (page < 1) {

@@ -11,7 +11,7 @@ const CartItemsList: React.FC<{ cartItems: CartItem[]}> = ({ cartItems }) => {
   const dispatch = useDispatch();
 
   return (
-    <div className="content my-4">
+    <div className="content my-4 md:pr-5">
       <ul className="divide-y divide-gray-200">
         {cartItems.map(cartItem => (
           <CartItemView

@@ -25,9 +25,12 @@ const CartPage = () => {
           <h4 className="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h4>
         </div>
 
-        <CartItemsList cartItems={cartItems} />
+        <div className="flex flex-col justify-between md:flex-row">
+          <CartItemsList cartItems={cartItems} />
+          <div className="divider hidden w-1 md:block border-l-2 border-gray-200 "></div>
+          <CartOverview subtotalPriceString={subtotalPriceString} />
+        </div>
       </div>
-      <CartOverview subtotalPriceString={subtotalPriceString} />
     </Layout>
   );
 };

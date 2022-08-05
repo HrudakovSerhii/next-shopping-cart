@@ -45,7 +45,7 @@ const CartItemView: React.FC<CartItemProps> = ({
               {name}
             </h3>
 
-            <p className="cart-item-price ml-4">
+            <p className="cart-item-price ml-4 whitespace-nowrap">
               {recommendedRetailPrice
                 ? `${recommendedRetailPriceCurrency} ${totalPrice}`
                 : 'No Price Available' }

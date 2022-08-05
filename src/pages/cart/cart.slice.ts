@@ -70,8 +70,8 @@ export const selectSubtotalPriceString = (state: AppState) => {
 
   if (cartItems.length) {
     const subtotalPrice = cartItems
-      .map(({ recommendedRetailPrice }) => recommendedRetailPrice)
-      .reduce((acc, current) => acc + current, 0);
+      .map(({ recommendedRetailPrice, quantity }) => recommendedRetailPrice * quantity)
+      .reduce((acc, current) => Number((acc + current).toFixed(2)), 0);
 
     const currency = cartItems[0].recommendedRetailPriceCurrency;
 

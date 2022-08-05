@@ -52,7 +52,7 @@ const cartSlice = createSlice({
   extraReducers: {
     [HYDRATE]: (state, action) => ({
       ...state,
-      ...action.payload,
+      ...action.payload.cart,
     }),
   },
 });

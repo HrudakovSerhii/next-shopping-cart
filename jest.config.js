@@ -1,7 +1,9 @@
 module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'jsdom',
   collectCoverageFrom: [
-    'src/**/*.{js,jsx}',
-    '!src/**/*.test.{js,jsx}',
+    'src/**/*.{ts,tsx,js,jsx}',
+    '!src/**/*.test.{ts,tsx,js,jsx}',
     '!src/globals.css',
     '!src/types.ts',
   ],
@@ -14,8 +16,9 @@ module.exports = {
     },
   },
   moduleDirectories: ['node_modules', 'src', '<rootDir>/testing'],
+  verbose: true,
   transform: {
-    '^.+\\.(ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.(ts|tsx|js|jsx)$': 'ts-jest',
   },
-  testEnvironment: 'jsdom',
+
 };

@@ -1,36 +1,31 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Layout from '../../components/Layout';
 
 import {
   selectCartItems,
   selectCartSize,
-  incrementQuantity,
-  decrementQuantity,
   selectSubtotalPriceString,
+
 } from './cart.slice';
 
-import CartItemView from '../../components/CartItemView';
 import CartOverview from '../../components/CartOverview';
+import CartItemsList from '../../components/CartItemsList';
 
 const CartPage = () => {
-  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const cartItemsCount = useSelector(selectCartSize);
   const subtotalPriceString = useSelector(selectSubtotalPriceString);
 
   return (
     <Layout cartItemsCount={cartItemsCount}>
-      <div className="cart-items-list grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
-        {cartItems.map(cartItem => (
-          <CartItemView
-            key={cartItem.gtin}
-            {...cartItem}
-            incrementQuantity={v => dispatch(incrementQuantity(v))}
-            decrementQuantity={v => dispatch(decrementQuantity(v))}
-          />
-        ))}
+      <div className="flex-1 overflow-y-auto">
+        <div className="flex items-start justify-between mt-4">
+          <h4 className="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h4>
+        </div>
+
+        <CartItemsList cartItems={cartItems} />
       </div>
       <CartOverview subtotalPriceString={subtotalPriceString} />
     </Layout>

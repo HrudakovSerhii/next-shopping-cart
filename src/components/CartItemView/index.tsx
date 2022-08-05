@@ -29,6 +29,8 @@ const CartItemView: React.FC<CartItemProps> = ({
     }
   };
 
+  const totalPrice = (recommendedRetailPrice * quantity).toFixed(2);
+
   return (
     <li className="cart-item-view flex py-4 w-full">
       <div className="cart-item-image p-4 h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
@@ -44,7 +46,7 @@ const CartItemView: React.FC<CartItemProps> = ({
 
             <p className="cart-item-price ml-4">
               {recommendedRetailPrice
-                ? `${recommendedRetailPriceCurrency} ${recommendedRetailPrice}`
+                ? `${recommendedRetailPriceCurrency} ${totalPrice}`
                 : 'No Price Available' }
             </p>
           </div>

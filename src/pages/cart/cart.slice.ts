@@ -45,6 +45,11 @@ const cartSlice = createSlice({
         }
       }
     },
+    removeFromCart: (state: CartState, action: ChangeQuantityAction) => {
+      const index = state.items.findIndex(item => item.gtin === action.payload);
+
+      state.items.splice(index, 1);
+    },
     clearCart: (state: CartState) => {
       state.items.slice(0, state.items.length);
     },
@@ -80,6 +85,7 @@ export const {
   addToCart,
   incrementQuantity,
   decrementQuantity,
+  removeFromCart,
   clearCart,
 } = cartSlice.actions;
 

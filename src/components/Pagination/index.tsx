@@ -27,13 +27,13 @@ const Pagination = ({ pageSize, currentPage, totalPagesCount }: Props) => {
       ) {
         return [
           ...acc,
-          <li>
+          <li key={`pagination-${pageNumber}`}>
             {pageNumber === currentPage ? (
               <span className="py-2 px-3 leading-tight text-gray-500 bg-indigo-100 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 {pageNumber}
               </span>
             ) : (
-              <Link href={`/?page=${pageNumber}`}>
+              <Link href={`/?page=${pageNumber}&pagesize=${pageSize}`}>
                 <a
                   href={`/?page=${pageNumber}`}
                   className="py-2 px-3 leading-tight text-gray-500 bg-indigo-100 border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -52,11 +52,9 @@ const Pagination = ({ pageSize, currentPage, totalPagesCount }: Props) => {
   );
 
   return (
-    <nav aria-label="page-navigation">
-      <ul className="flex justify-end -space-x-px">
-        {visiblePagesListView}
-      </ul>
-    </nav>
+    <ul className="pagination-list flex justify-end -space-x-px">
+      {visiblePagesListView}
+    </ul>
   );
 };
 

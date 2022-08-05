@@ -18,11 +18,11 @@ const Dropdown: FC<DropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative bg-indigo-100 z-10">
+    <div className="relative z-10">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-lg focus:shadow-outline hover:bg-indigo-800"
+        className="inline-flex items-center h-10 px-5 text-indigo-100 transition-colors duration-150 bg-indigo-600 rounded-lg focus:shadow-outline hover:bg-indigo-800"
       >
         <span>{title}</span>
         <svg className="w-4 h-4 ml-3 fill-current" viewBox="0 0 20 20">

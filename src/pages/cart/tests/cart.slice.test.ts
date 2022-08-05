@@ -12,8 +12,10 @@ import cartReducer, {
 
 import { makeStore } from '../../../redux/store';
 
+import { AppState } from '../../../types';
+
 describe('cart.slice', () => {
-  const store = makeStore();
+  const store = makeStore({ isServer: true });
   const { dispatch } = store;
 
   const mockCartItem = {
@@ -27,7 +29,8 @@ describe('cart.slice', () => {
 
   describe('cart.slice actions', () => {
     it('Should initially set cart items to an empty array', () => {
-      const state = store.getState();
+      // @ts-ignore
+      const state: AppState = store.getState();
 
       expect(state.cart).toEqual({
         items: [],
@@ -37,6 +40,7 @@ describe('cart.slice', () => {
     it('Should add product item to cart correctly', () => {
       dispatch(addToCart(mockCartItem));
 
+      // @ts-ignore
       expect(store.getState().cart).toStrictEqual({
         items: [
           mockCartItem,
@@ -47,6 +51,7 @@ describe('cart.slice', () => {
     it('Should increment by 1 existing product quantity correctly', () => {
       dispatch(incrementQuantity(mockCartItem.gtin));
 
+      // @ts-ignore
       expect(store.getState().cart).toStrictEqual({
         items: [
           { ...mockCartItem, quantity: 2 },
@@ -57,6 +62,7 @@ describe('cart.slice', () => {
     it('Should decrement by 1 existing product quantity correctly', () => {
       dispatch(decrementQuantity(mockCartItem.gtin));
 
+      // @ts-ignore
       expect(store.getState().cart).toStrictEqual({
         items: [
           { ...mockCartItem, quantity: 1 },
@@ -67,6 +73,7 @@ describe('cart.slice', () => {
     it('Should not decrement by 1 if searched product is not in a list', () => {
       dispatch(decrementQuantity('4321'));
 
+      // @ts-ignore
       expect(store.getState().cart).toStrictEqual({
         items: [
           { ...mockCartItem, quantity: 1 },
@@ -77,13 +84,15 @@ describe('cart.slice', () => {
     it('Should remove item from Cart correctly', () => {
       dispatch(removeFromCart(mockCartItem.gtin));
 
+      // @ts-ignore
       expect(store.getState().cart).toStrictEqual({
         items: [],
       });
     });
 
     it('Should clear cart list correctly', () => {
-      const { cart } = makeStore().getState();
+      // @ts-ignore
+      const { cart } = store.getState();
 
       dispatch(addToCart(mockCartItem));
       dispatch(clearCart());

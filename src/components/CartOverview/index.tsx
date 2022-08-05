@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const CartOverview: React.FC<{ subtotalPriceString: string}> = ({ subtotalPriceString }) => (
-  <div className="cart-overview border-t border-gray-200 py-6 px-4 sm:px-6">
+  <div className="cart-overview pt-5 border-t border-gray-200">
     <div className="cart-subtotal flex justify-between text-base font-medium text-gray-900">
       <p>{subtotalPriceString}</p>
     </div>

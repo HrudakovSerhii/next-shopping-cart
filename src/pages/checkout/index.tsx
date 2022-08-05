@@ -15,14 +15,16 @@ export const getServerSideProps = wrapper.getServerSideProps(
   });
 
 const Checkout: React.FC = () => (
-  <div className="container mx-auto px-4">
+  <div className="container mx-auto flex flex-col items-center justify-center h-screen">
     <strong>
       Yaay! You got all items for free! But I forgot to ask you your address...
       Lets try one more time! ;)
     </strong>
     <Link href="/">
-      {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-      <a className="home-link underline">Home</a>
+      <button type="button" className="mt-4 font-medium text-indigo-600 hover:text-indigo-500">
+        Back to Home Page
+        <span aria-hidden="true"> &rarr;</span>
+      </button>
     </Link>
   </div>
 );

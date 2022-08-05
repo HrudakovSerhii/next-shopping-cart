@@ -6,7 +6,7 @@ import {
 
 import cartReducer, { CART } from '../pages/cart/cart.slice';
 
-const makeStore = () =>
+export const makeStore = () =>
   configureStore({
     reducer: {
       [CART]: cartReducer,

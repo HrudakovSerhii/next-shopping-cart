@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Image from '../Image';
 import { CartItem } from '../../types';
 
 type CartItemAction = (gtin: string) => void;
@@ -34,7 +35,7 @@ const CartItemView: React.FC<CartItemProps> = ({
   return (
     <li className="cart-item-view flex py-4 w-full">
       <div className="cart-item-image p-4 h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-        <img alt={name} src={imageUrl} className="h-full w-full object-cover object-center" />
+        <Image alt={name} src={imageUrl} className="h-full w-full object-cover object-center" />
       </div>
 
       <div className="cart-item-content ml-4 flex flex-1 flex-col justify-between">

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Image from '../Image';
+
 import { CartItem, Product } from '../../types';
 
 type ProductItemProps = Product & {
@@ -36,7 +38,7 @@ const ProductItemView: React.FC<ProductItemProps> = ({
       <div
         className="image flex justify-center aspect-w-1 h-32 rounded-md group-hover:opacity-75 lg:h-40 lg:aspect-none"
       >
-        <img
+        <Image
           alt={name}
           src={imageUrl}
           className="w-auto h-full object-center object-cover lg:w-auto lg:h-full"

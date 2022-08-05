@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 type ImageProps = {
     src: string;
-    fallbackSrc: string;
+    fallbackSrc?: string;
     alt: string;
     className: string
 }

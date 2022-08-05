@@ -41,11 +41,16 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
 
   return (
     <Layout cartItemsCount={cartItemsCount}>
-      <h1>Products</h1>
-      <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
-        {products.map(product => (
-          <ProductItemView key={product.gtin} {...product} addToCart={addToCartAction} />
-        ))}
+      <div className="flex-1 overflow-y-auto">
+        <div className="flex items-start justify-between mt-4">
+          <h4 className="text-lg font-medium text-gray-900" id="slide-over-title">Products</h4>
+        </div>
+
+        <ul className="divide-gray-200 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
+          {products.map(product => (
+            <ProductItemView key={product.gtin} {...product} addToCart={addToCartAction} />
+          ))}
+        </ul>
       </div>
     </Layout>
   );

@@ -45,6 +45,9 @@ const cartSlice = createSlice({
         }
       }
     },
+    clearCart: (state: CartState) => {
+      state.items.slice(0, state.items.length);
+    },
   },
   extraReducers: {
     [HYDRATE]: (state, action) => ({
@@ -77,6 +80,7 @@ export const {
   addToCart,
   incrementQuantity,
   decrementQuantity,
+  clearCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

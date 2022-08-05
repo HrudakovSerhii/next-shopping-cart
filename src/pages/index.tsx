@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Layout from '../components/Layout';
 import ProductItemView from '../components/ProductItemView';
+import Pagination from '../components/Pagination';
 
 import { fetchData } from '../utils';
 
@@ -20,18 +21,20 @@ export const getServerSideProps = async ({ resolvedUrl }: { resolvedUrl: string 
 
   return {
     props: {
-      count: productsData.count,
+      page: productsData.page,
+      productsCount: productsData.count,
       products: productsData.results,
     },
   };
 };
 
 type HomePageProps = {
-    count: string,
-    products: Product[],
+  page: number,
+  productsCount: number,
+  products: Product[],
 }
 
-const HomePage: React.FC<HomePageProps> = ({ products }) => {
+const HomePage: React.FC<HomePageProps> = ({ products, page, productsCount }) => {
   const dispatch = useDispatch();
   const cartItemsCount = useSelector(selectCartSize);
 
@@ -45,6 +48,7 @@ const HomePage: React.FC<HomePageProps> = ({ products }) => {
         <div className="flex items-start justify-between mt-4">
           <h4 className="text-lg font-medium text-gray-900" id="slide-over-title">Products</h4>
         </div>
+        <Pagination pageSize={10} currentPage={page} totalPagesCount={productsCount} />
 
         <ul className="divide-gray-200 grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 mt-4">
           {products.map(product => (
